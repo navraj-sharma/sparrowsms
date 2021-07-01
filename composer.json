@@ -1,0 +1,49 @@
+{
+    "name": "navraj-sharma/sparrowsms",
+    "description": "Sparrow SMS notification channel for Laravel",
+    "keywords": ["laravel", "Sparrow", "notification", "sms"],
+    "homepage": "https://github.com/navraj-sharma",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Navraj Sharma",
+            "email": "info@navraj.com",
+            "homepage": "https://github.com/navraj-sharma",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=8",
+        "illuminate/notifications": "*",
+        "illuminate/support": "*",
+        "guzzlehttp/guzzle": "*"
+    },
+    "require-dev": {
+        "mockery/mockery": "^1.0",
+        "phpunit/phpunit": "^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "NavrajSharma\\SparrowSMS\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "NavrajSharma\\SparrowSMS\\Test\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test:coverage": "phpunit --coverage-text --coverage-clover=coverage.clover"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "NavrajSharma\\SparrowSMS\\SparrowSMSServiceProvider"
+            ]
+        }
+    }
+}
