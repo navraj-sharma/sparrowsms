@@ -20,7 +20,7 @@ This package makes it easy to send notifications using [SparrowSMS](https://spar
 
 You can install this package via composer:
 ``` bash
-composer require navraj/sparrowsms
+composer require navraj-sharma/sparrowsms
 ```
 
 ### Setting up the SparrowSMS service
