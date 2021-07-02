@@ -84,7 +84,7 @@ class SparrowSMSChannel
         $sms = [
             'token' => $this->token,
             'from' => $this->from,
-            'to' => $this->sanitizeMobileNumber($to),
+            'to' => $to,
             'text' => $message->body
         ];
 
@@ -132,12 +132,4 @@ class SparrowSMSChannel
         return $this->api_endpoint.$this->methods['send'];
     }
 
-
-    protected function sanitizeMobileNumber(&$to) {
-
-        $to = str_replace('+977','',$to);
-        $to = str_replace('-', '', $to); // Replaces all hyphens.
-        $to = preg_replace('/[^A-Za-z0-9\-]/', '', $to); // Removes special chars.
-
-    }
 }
