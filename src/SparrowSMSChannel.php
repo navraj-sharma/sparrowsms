@@ -102,12 +102,7 @@ class SparrowSMSChannel
 
             $client = new Client();
             $request = $client->get( $url, [
-                'query' => [
-                    'token' => $this->token,
-                    'from' => $this->from,
-                    'to' => $this->sanitizeMobileNumber($to),
-                    'text' => $message->body
-                ],
+                'query' => $sms,
                 'http_errors' => true
             ]);
 
