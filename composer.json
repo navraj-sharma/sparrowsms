@@ -13,10 +13,12 @@
         }
     ],
     "require": {
-        "php": ">=8",
+        "php": ">=7.3",
         "illuminate/notifications": "*",
         "illuminate/support": "*",
-        "guzzlehttp/guzzle": "*"
+        "guzzlehttp/guzzle": "*",
+        "laravel/framework": "^8.40",
+        "laravel/tinker": "^2.5"
     },
     "require-dev": {
         "mockery/mockery": "^1.0",
