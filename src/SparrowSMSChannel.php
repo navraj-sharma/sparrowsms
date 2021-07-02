@@ -74,7 +74,7 @@ class SparrowSMSChannel
     {
 
         $url = $this->getSendUrl();
-        $to = $notifiable->routeNotificationFor('sparrowsms', $notification) ? : $notifiable->mobile;
+        $to = $notifiable->routeNotificationForSparrowSMS();
 
         $message = $notification->toSparrowSMS($notifiable);
         if (is_string($message)) {
@@ -105,7 +105,7 @@ class SparrowSMSChannel
                 'query' => [
                     'token' => $this->token,
                     'from' => $this->from,
-                    'to' => $to,
+                    'to' => $this->sanitizeMobileNumber($to),
                     'text' => $message->body
                 ],
                 'http_errors' => true
