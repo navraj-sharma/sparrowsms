@@ -15,7 +15,7 @@ class SparrowSMSServiceProvider extends ServiceProvider
     {
         Notification::resolved(function (ChannelManager $service) {
             $service->extend('sparrowsms', function ($app) {
-                return new SparrowSMSChannel(config('sparrowsms'));
+                return new SparrowSMSChannel(config('services.sparrowsms'));
             });
         });
     }
@@ -25,10 +25,6 @@ class SparrowSMSServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/sparrowsms.php', 'sparrowsms');
-
-        $this->publishes([
-            __DIR__.'/../config/sparrowsms.php' => config_path('sparrowsms.php'),
-        ]);
+        
     }
 }
