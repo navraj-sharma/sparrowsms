@@ -10,7 +10,7 @@ use Exceptions\SparrowSMSError;
 
 class SparrowSMSChannel
 {
-    
+
 
     /**
      * Token generated from sparrow sms website.
@@ -44,10 +44,8 @@ class SparrowSMSChannel
 
     protected $debug;
 
-    
-    protected $sandbox;
 
-    protected $to;
+    protected $sandbox;
 
 
     public function __construct(array $config = [])
@@ -74,7 +72,7 @@ class SparrowSMSChannel
      */
     public function send($notifiable, Notification $notification)
     {
-        
+
         $url = $this->getSendUrl();
         $to = $notifiable->routeNotificationFor('sparrowsms', $notification) ? : $notifiable->mobile;
 
@@ -91,7 +89,8 @@ class SparrowSMSChannel
         ];
 
         if ($this->debug) {
-            Log::info('SparrowSMS sending message to url '.print_r($sms, true));
+            Log::info('SparrowSMS sandbox '.print_r($this->sandbox, true));
+            Log::info('SparrowSMS sending message to url '.print_r($url, true));
             Log::info('SparrowSMS sending message as '.print_r($sms, true));
         }
 
@@ -117,7 +116,7 @@ class SparrowSMSChannel
         }
         catch (ClientException $exception) {
             throw SparrowSMSError::SparrowSMSConnectionError($exception);
-        }       
+        }
 
         if ($this->debug) {
             Log::info('SparrowSMS sent result as '.print_r($response, true));
@@ -129,14 +128,14 @@ class SparrowSMSChannel
 
 
 
-    protected function getSendUrl() { 
-        return $this->api_endpoint.$this->methods['send']; 
+    protected function getSendUrl() {
+        return $this->api_endpoint.$this->methods['send'];
     }
 
-    
-    protected function sanitizeMobileNumber(&$to) { 
-        
-        $to = str_replace('+977','',$this->to);
+
+    protected function sanitizeMobileNumber(&$to) {
+
+        $to = str_replace('+977','',$to);
         $to = str_replace('-', '', $to); // Replaces all hyphens.
         $to = preg_replace('/[^A-Za-z0-9\-]/', '', $to); // Removes special chars.
 

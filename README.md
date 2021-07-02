@@ -34,7 +34,7 @@ Add your SparrowSMS configurations to your config/sparrowsms.php:
     'token' => env('SPARROWSMS_TOKEN'), 
     'from' => env('SPARROWSMS_FROM'),
     'api_endpoint' => env('SPARROWSMS_API_ENDPOINT', 'http://api.sparrowsms.com/v2/'),
-    'sanndbox' =>  env('SPARROWSMS_SANDBOX', false),
+    'sandbox' =>  env('SPARROWSMS_SANDBOX', false),
     
     'methods' => [
         'send' => 'sms/',
